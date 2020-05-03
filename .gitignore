@@ -1,1 +1,2 @@
-.xml
+# we ignore each node.xml in the folder
+node.xml
