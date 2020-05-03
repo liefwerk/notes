@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Deleting Data</title>
+</head><body><b>Deleting Data<br/>
+<br/>
+</b>On construit une nouvelle fonction deleteNinja. Dans celle-ci on prend l'id du ninja et on applique la méthode filter.<br/>
+We construct a new function <tt><span style="color: #00007f">deleteNinja<b>,</b></span></tt>in this function we'll take the id of the props and apply the <tt><span style="color: #00007f">filter()</span></tt>&nbsp;method.<b><br/>
+</b><b><br/>
+</b><span style="color: #00007f"><tt>deleteNinja = (id) =&gt; {<ul><li style="list-style-type: none">let ninjas = this.state.ninjas.filter(ninja =&gt; {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">return ninja.id !== id</li>
+</ul>
+</li>
+<li style="list-style-type: none">})</li>
+<li style="list-style-type: none">this.setState({</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">ninjas: ninjas</li>
+</ul>
+</li>
+<li style="list-style-type: none">})</li>
+</ul>
+}<br/>
+</tt></span><br/>
+<i>It is important to use setState to apply the change, otherwise it modifies directly the array.</i><br/>
+<br/>
+In Ninja.js, we add a button with an <tt><span style="color: #00007f">onClick</span></tt>&nbsp;attribute to trigger the <tt><span style="color: #00007f">deleteNinja()</span></tt>&nbsp;function.<br/>
+<br/>
+<tt><span style="color: #00007f">&lt;button onClick = {() =&gt; { deleteNinja(ninja.id) }}&gt;DeleteNinja&lt;/button&gt;<br/>
+<br/>
+</span></tt>That function is passed inside an anonymous function so it isn't triggered when it is first loaded in the DOM.</body></html>

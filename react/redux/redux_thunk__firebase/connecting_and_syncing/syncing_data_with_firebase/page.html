@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Syncing Data with Firebase</title>
+</head><body><b>Syncing Data with Firebase<br/>
+<br/>
+</b>To sync up our redux state with the firebase database.<br/>
+First, in our Root reducer we'll import the package firestoreReducer from redux-firestore<br/>
+<br/>
+<tt><span style="color: #00007f">import { firestoreReducer } from 'redux-firestore'</span></tt><br/>
+<br/>
+This is an already made reducer that will know about our projects and how to access the data (it receives the access from the config)<br/>
+The second step is to connect the firestore reducer to a component.<br/>
+<br/>
+We import <tt><span style="color: #00007f">compose() </span></tt>and <tt><span style="color: #00007f">firestoreConnect()</span></tt><br/>
+<br/>
+<tt><span style="color: #00007f">import { firestoreConnect } from 'react-redux-firebase'<br/>
+</span></tt><tt><span style="color: #00007f">import { compose } from 'redux'</span></tt><br/>
+<br/>
+and when exporting the component, include the <tt><span style="color: #00007f">firestoreConnect()</span></tt>&nbsp;function as an Higher Order Component with the <tt><span style="color: #00007f">connect()</span></tt>&nbsp;function<br/>
+<br/>
+<tt><span style="color: #00007f">export default compose(<ul><li style="list-style-type: none">connect(mapStateToProps),</li>
+<li style="list-style-type: none">firestoreConnect([</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">{ collection: 'projects'}</li>
+</ul>
+</li>
+<li style="list-style-type: none">])</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">)(Dashboard)</span></tt><br/>
+<br/>
+We then return the data from firestore inside the <tt><span style="color: #00007f">mapStateToProps</span></tt>&nbsp;function<br/>
+<br/>
+<tt><span style="color: #00007f">return {<ul><li style="list-style-type: none">projects: state.firestore.ordered.projects</li>
+</ul>
+}</span></tt></body></html>

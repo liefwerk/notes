@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Stateless Components</title>
+</head><body><b>Stateless Components<br/>
+<br/>
+</b>Differents types of components:<br/>
+<br/>
+<b>Container components:<br/>
+</b>- not concerned with UI or look<br/>
+- contain state<br/>
+- serve as data sources<br/>
+- contain lifecycle hooks<br/>
+- use classes to create them<br/>
+<br/>
+<b>UI Component:<br/>
+</b>- don't contain states<br/>
+- receive data from props<br/>
+- only concerned with UI<br/>
+- use functions to create, not classes<br/>
+<br/>
+Example:<br/>
+<br/>
+<span style="color: #00007f"><tt>const Ninjas = (props) =&gt; {<br/>
+<ul><li style="list-style-type: none">const { ninjas } = props;</li>
+</ul>
+<br/>
+</tt></span><span style="color: #00007f"><tt>}</tt></span><br/>
+<br/>
+It also is possible to do it the destructuring way:<br/>
+<br/>
+<tt><span style="color: #00007f">const Ninjas = ({ninjas}) =&gt; {<ul><li style="list-style-type: none"></li>
+</ul>
+}<br/>
+<br/>
+</span></tt>It saves a few lines.</body></html>

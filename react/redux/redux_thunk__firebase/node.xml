@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node>
+<version>6</version>
+<dict>
+  <key>expanded</key><false/>
+  <key>nodeid</key><string>dda80b2a-2bb4-46c4-81db-1b63cadaf510</string>
+  <key>modified_time</key><integer>1587917549</integer>
+  <key>expanded2</key><true/>
+  <key>content_type</key><string>application/x-notebook-dir</string>
+  <key>created_time</key><integer>1587917549</integer>
+  <key>info_sort_dir</key><integer>1</integer>
+  <key>title</key><string>Redux Thunk &amp; Firebase</string>
+  <key>version</key><integer>6</integer>
+  <key>order</key><integer>0</integer>
+  <key>info_sort</key><string>order</string>
+</dict>
+</node>

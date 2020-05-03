@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>User Signup</title>
+</head><body><b>User Signup<br/>
+<br/>
+</b>First, let's create the action:<br/>
+<br/>
+<span style="color: #00007f"><tt>export const signUp = (newUser) =&gt; {<ul><li style="list-style-type: none">return (dispatch, getState, {getFirebase, getFirestore}) =&gt; {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">const firebase = getFirebase();</li>
+<li style="list-style-type: none">const firestore = getFirestore();</li>
+<li style="list-style-type: none"></li>
+<li style="list-style-type: none">firebase.auth().createUserWithEmailAndPassword(</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">newUser.email, </li>
+<li style="list-style-type: none">newUser.password</li>
+</ul>
+</li>
+<li style="list-style-type: none">).then(resp =&gt; {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">return firestore.collection('users').doc(resp.user.uid).set({</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">firstName: newUser.firstName,</li>
+<li style="list-style-type: none">lastName: newUser.lastName,</li>
+<li style="list-style-type: none">initials: newUser.firstName[0] + newUser.lastName[0]</li>
+</ul>
+</li>
+<li style="list-style-type: none">});</li>
+</ul>
+</li>
+<li style="list-style-type: none">}).then(() =&gt; {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">dispatch({ type: 'SIGNUP_SUCCESS' });</li>
+</ul>
+</li>
+<li style="list-style-type: none">}).catch((err) =&gt; {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">dispatch({ type: 'SIGNUP_ERROR', err});</li>
+</ul>
+</li>
+<li style="list-style-type: none">});</li>
+</ul>
+</li>
+<li style="list-style-type: none">}</li>
+</ul>
+</tt></span><span style="color: #00007f"><tt>}</tt></span><br/>
+<br/>
+We then handle it inside our Reducer<br/>
+<br/>
+<tt><span style="color: #00007f">case 'SIGNUP_ERROR':<ul><li style="list-style-type: none">console.log('signup error');</li>
+<li style="list-style-type: none">return {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">...state,</li>
+<li style="list-style-type: none">authError: action.err.message</li>
+</ul>
+</li>
+<li style="list-style-type: none">&nbsp;}</li>
+</ul>
+case 'SIGNUP_SUCCESS':<ul><li style="list-style-type: none">return {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">...state,</li>
+<li style="list-style-type: none">authError: null</li>
+</ul>
+</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">}</span></tt><br/>
+<br/>
+Then in the SignUp.js component we add the dispatch to props<br/>
+<br/>
+<tt><span style="color: #00007f">const mapDispatchToProps = (dispatch) =&gt; {<ul><li style="list-style-type: none">return {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">signUp: (newUser) =&gt; dispatch(signUp(newUser))</li>
+</ul>
+</li>
+<li style="list-style-type: none">}</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">}</span></tt><br/>
+<br/>
+and we pass the state in the function in the <tt><span style="color: #00007f">handleSubmit()</span></tt>&nbsp;function<br/>
+<br/>
+<tt><span style="color: #00007f">handleSumbit = (e) =&gt; {<ul><li style="list-style-type: none">e.preventDefault();</li>
+<li style="list-style-type: none">this.props.signUp(this.state)</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">}</span></tt><br/>
+</body></html>

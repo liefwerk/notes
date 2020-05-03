@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Example with Forms</title>
+</head><body><b>An example for a Form</b><br/>
+<br/>
+<tt><span style="color: #007f7f">// We import React</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">import React, { Component } from "react"</span><br/>
+<br/>
+// Because we'll use datas from other components we'll make it as a class and not a function<br/>
+<span style="color: #00007f">class AddNinja extends Component {</span><br/>
+<br/>
+<span style="color: #007f7f">// declaration of the state with the data inside</span><br/>
+<span style="color: #00007f">&nbsp; state = {<br/>
+&nbsp; &nbsp; name: null,<br/>
+&nbsp; &nbsp; age: null,<br/>
+&nbsp; &nbsp; belt: null<br/>
+&nbsp; }<br/>
+</span><br/>
+<span style="color: #007f7f">// fonction handlechange that fires setState each time there's a change. Later on we'll use Redux to do that.</span><br/>
+<span style="color: #00007f">&nbsp; handleChange = (e) =&gt; {<br/>
+&nbsp; &nbsp; this.setState({<br/>
+&nbsp; &nbsp; &nbsp; [e.target.id] : e.target.value<br/>
+&nbsp; &nbsp; })<br/>
+</span><span style="color: #00007f">&nbsp; }</span><br/>
+<br/>
+<span style="color: #007f7f">// fonction handleSubmit qui évite la recharge de la page et log le résultat</span><br/>
+<span style="color: #00007f">handleSubmit = (e) =&gt; {<ul><li style="list-style-type: none">e.preventDefault();</li>
+<li style="list-style-type: none">console.log(this.state);</li>
+</ul>
+}<br/>
+</span><span style="color: #007f7f">// the render method</span><br/>
+<span style="color: #00007f">render(){</span><ul><span style="color: #00007f"><li style="list-style-type: none">return (</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;div&gt;</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;form onSubmit={this.handleSubmit}&gt;</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;label htmlFor="name"&gt;Name:&lt;/label&gt;</li>
+<li style="list-style-type: none">&lt;input type="text" id="name" onChange={this.handleChange} /&gt;</li>
+<li style="list-style-type: none">&lt;label htmlFor="name"&gt;Age:&lt;/label&gt;</li>
+<li style="list-style-type: none">&lt;input type="text" id="age" onChange={this.handleChange} /&gt;</li>
+<li style="list-style-type: none">&lt;label htmlFor="name"&gt;Belt:&lt;/label&gt;</li>
+<li style="list-style-type: none">&lt;input type="text" id="belt" onChange={this.handleChange} /&gt;</li>
+<li style="list-style-type: none">&lt;button&gt;Submit&lt;/button&gt;</li>
+</ul>
+</li>
+<li style="list-style-type: none">&lt;/form&gt; </li>
+</ul>
+</li>
+<li style="list-style-type: none">&lt;/div&gt;</li>
+<li style="list-style-type: none">)</li>
+</ul>
+</li>
+</span><li style="list-style-type: none"><span style="color: #00007f">}</span></li>
+</ul>
+}<br/>
+<br/>
+<span style="color: #007f7f">// let's not forget to export the Component/class</span><br/>
+<span style="color: #00007f">export default AddNinja</span></tt></body></html>

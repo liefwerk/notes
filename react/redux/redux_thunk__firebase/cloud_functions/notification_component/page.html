@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Notification Component</title>
+</head><body><b>Notification System<br/>
+<br/>
+</b>First we'll create a function that reacts to a new project being created and one that will react to a new user joining.<br/>
+<br/>
+In index.js in the functions folder we import <tt><span style="color: #00007f">firebase-admin</span></tt><br/>
+<br/>
+<tt><span style="color: #00007f">const admin = require('firebase-admin');</span></tt><br/>
+<br/>
+then we initialize the app with the config<br/>
+<br/>
+<tt><span style="color: #00007f">admin.initializeApp(functions.config().firebase);</span></tt><br/>
+<br/>
+and we create/export the cloud function<br/>
+<br/>
+<tt><span style="color: #00007f">exports.projectCreated = functions.firestore<ul><li style="list-style-type: none">.document('projects/{projectId}')</li>
+<li style="list-style-type: none">.onCreate(doc =&gt; {</li>
+<li style="list-style-type: none"></li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">const project = doc.data();</li>
+<li style="list-style-type: none">const notification = {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">content: 'Added a new project',</li>
+<li style="list-style-type: none">user: `${project.authorFirstName} ${project.authorLastName}`,</li>
+<li style="list-style-type: none">time: admin.firestore.FieldValue.serverTimestamp()</li>
+</ul>
+</li>
+<li style="list-style-type: none">}</li>
+</ul>
+</li>
+<li style="list-style-type: none">return createNotification(notification)</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">})</span></tt><br/>
+<br/>
+That function needs to return a notification, to do that we'll first create a <tt><span style="color: #00007f">createNotification()</span></tt>&nbsp;function<br/>
+<br/>
+<tt><span style="color: #00007f">const createNotification = (notification =&gt; {<ul><li style="list-style-type: none">return admmin.firestore().collection('notifications')</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">.add(notification)</li>
+<li style="list-style-type: none">.then(doc =&gt; console.log('notification added', doc));</li>
+</ul>
+</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">});</span></tt><br/>
+<br/>
+We then write <tt><span style="color: #00007f">firebase deploy</span></tt>&nbsp;in the console to deploy the cloud function</body></html>

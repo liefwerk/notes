@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Route Parameters</title>
+</head><body><b>Route Parameters<br/>
+<br/>
+</b>There are parts of a URL that can change. Data they show change based on this URL.<br/>
+Could be a name, an id or else. All showing the same components but different data.<br/>
+<br/>
+In App.js we create a route for the component that will show the post.<br/>
+<br/>
+<tt><span style="color: #00007f">&lt;Route path="/:post_id" component = {Post} /&gt; &nbsp;</span></tt><br/>
+<br/>
+Then we create Post.js, inside we create an id and pass it as a variable.<br/>
+<br/>
+<span style="color: #00007f"><tt>import React, { Component } from 'react'<br/>
+<br/>
+class Post extends Component {<ul><li style="list-style-type: none">state = {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">id: null</li>
+</ul>
+</li>
+<li style="list-style-type: none">}</li>
+<li style="list-style-type: none">componentDidMount(){</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">let id = this.props.match.params.post_id;</li>
+<li style="list-style-type: none">this.setState({</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">id: id</li>
+</ul>
+</li>
+<li style="list-style-type: none">})</li>
+</ul>
+</li>
+<li style="list-style-type: none">}</li>
+<li style="list-style-type: none">render(){</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">return(</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;div className="container"&gt;</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;h4&gt;{this.state.id}&lt;/h4&gt;</li>
+</ul>
+</li>
+<li style="list-style-type: none">&lt;/div&gt;</li>
+</ul>
+</li>
+<li style="list-style-type: none">)</li>
+</ul>
+</li>
+<li style="list-style-type: none">}</li>
+</ul>
+</tt></span><tt><span style="color: #00007f">}</span><br/>
+</tt><br/>
+<tt><span style="color: #00007f">export default Post</span></tt><br/>
+<br/>
+---<br/>
+<br/>
+To create a link from the homepage to the individual card, we load the link function<br/>
+<br/>
+<tt><span style="color: #00007f">import {Link} from 'react-router-dom'</span></tt><br/>
+<br/>
+Then wrap the JSX<br/>
+<br/>
+<tt><span style="color: #00007f">Link to={'/'+post.id}&gt;&lt;span className="card-title"&gt;{post.title}&lt;/span&gt;&lt;p&gt;{post.body}&lt;/p&gt;&lt;/Link&gt;</span></tt><br/>
+<br/>
+In the Post.js component, we create a state with the post<br/>
+<br/>
+<tt><span style="color: #00007f">state={post:null}</span></tt><br/>
+<br/>
+Then in <tt><span style="color: #00007f">componentDidMount()</span></tt><br/>
+<br/>
+<tt><span style="color: #00007f">componentDidMount(){<ul><li style="list-style-type: none">let id = this.props.match.params.post_id;</li>
+<li style="list-style-type: none">axios.get('https://jsonplaceholder.typicode.com/posts/' + id, { crossdomain: true })</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">.then(res =&gt; {</li>
+<li style="list-style-type: none">this.setState({</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">post: res.data</li>
+</ul>
+</li>
+<li style="list-style-type: none">})</li>
+</ul>
+</li>
+<li style="list-style-type: none">})</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">}</span></tt><br/>
+<br/>
+We then use a turnary operator in the render method to check if there are posts or not.<br/>
+If there are post, we print them.<br/>
+<br/>
+<tt><span style="color: #00007f">const post = this.state.post ? (<ul><li style="list-style-type: none">&lt;div className="post"&gt;</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;h4 className="center"&gt;{this.state.post.title}&lt;/h4&gt;</li>
+<li style="list-style-type: none">&lt;p&gt;{this.state.post.body}&lt;/p&gt;</li>
+<li style="list-style-type: none">&lt;/div&gt;</li>
+</ul>
+</li>
+<li style="list-style-type: none">) : (</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;div className="center"&gt;Loading posts...&lt;/div&gt;</li>
+</ul>
+</li>
+<li style="list-style-type: none">)</li>
+<li style="list-style-type: none"></li>
+<li style="list-style-type: none">return(</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;div className="container"&gt;</li>
+<li style="list-style-type: none">&lt;h4&gt;{ post }&lt;/h4&gt;</li>
+</ul>
+</li>
+<li style="list-style-type: none">&lt;/div&gt;</li>
+</ul>
+)</span></tt></body></html>

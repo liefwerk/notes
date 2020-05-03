@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Connecting Redux to Firebase</title>
+</head><body><b>Connecting Redux to Firebase<br/>
+<br/>
+</b>Let's install the packages to interact with the database (API) and sync up the react database with the store.<br/>
+<br/>
+<span style="color: #00007f"><tt>npm i react-redux-firebase redux-firestore</tt></span><br/>
+<br/>
+Then we import the packages in index.js<br/>
+<br/>
+<span style="color: #00007f"><tt>import firebase from 'firebase/app'<br/>
+import firebaseConfig from './config/fbConfig'<br/>
+import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-firestore'<br/>
+import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase'<br/>
+</tt></span><br/>
+To link them with thunk, we use the <span style="color: #00007f"><tt>withExtraArgument()</tt></span>&nbsp;function<br/>
+<br/>
+<span style="color: #00007f"><tt>const store = createStore(rootReducer, applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})));</tt></span><br/>
+<br/>
+Inside projectActions.js, where we dispatch our action and connect with Firestore, we'll add this new argument<br/>
+<br/>
+<tt><span style="color: #00007f">export const createProject = (project) =&gt; {</span><ul><span style="color: #00007f"><li style="list-style-type: none">return (dispatch, getState, {getFirebase, getFirestore}) =&gt; {</li>
+</span><li style="list-style-type: none"><ul><li style="list-style-type: none"><span style="color: #007f7f">// make async call to database</span></li>
+<span style="color: #00007f"><li style="list-style-type: none">dispatch({ type: 'CREATE_PROJECT', project })</li>
+</span></ul>
+</li>
+<span style="color: #00007f"><li style="list-style-type: none">}</li>
+</span></ul>
+<span style="color: #00007f">}<br/>
+<br/>
+</span></tt>But only that won't tell Firebase the project infos and datas. We'll have to use store enhancers.<br/>
+We already used one in the past, the <tt><span style="color: #00007f">applyMiddleware()</span></tt>&nbsp;function is a store enhancer.<br/>
+It is possible to combine several store enhancers together.<br/>
+<br/>
+First, we import <span style="color: #00007f"><tt>compose</tt></span>&nbsp;from <span style="color: #00007f"><tt>redux</tt></span><br/>
+<br/>
+<span style="color: #00007f"><tt>import { createStore, applyMiddleware, compose } from 'redux'</tt></span><br/>
+<br/>
+And inside the store constant, we'll add the compose function to include both of these functions<br/>
+<br/>
+<span style="color: #00007f"><tt>const store = createStore(rootReducer, <ul><li style="list-style-type: none">compose(</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),</li>
+<li style="list-style-type: none">reduxFirestore(firebase, firebaseConfig)</li>
+</ul>
+</li>
+<li style="list-style-type: none">) </li>
+</ul>
+</tt></span><span style="color: #00007f"><tt>);</tt></span><br/>
+<br/>
+Then we wrap the App tag with <span style="color: #00007f">&lt;<tt>ReactReduxFirebaseProvider&gt;</tt></span><br/>
+<br/>
+<tt><span style="color: #00007f">&lt;ReactReduxFirebaseProvider {...rrfProps}&gt;<ul><li style="list-style-type: none">&lt;App /&gt;</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">&lt;/ReactReduxFirebaseProvider&gt;</span></tt><br/>
+<br/>
+And we create a const with all the parameters to pass inside that tag<br/>
+<br/>
+<tt><span style="color: #00007f">const rrfProps = {<ul><li style="list-style-type: none">firebase,</li>
+<li style="list-style-type: none">config: firebaseConfig,</li>
+<li style="list-style-type: none">dispatch: store.dispatch,</li>
+<li style="list-style-type: none">createFirestoreInstance</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">};</span></tt><br/>
+<br/>
+<br/>
+</body></html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Intro and Setup</title>
+</head><body><b>Introduction<br/>
+<br/>
+</b>Cloud functions are function runned by the server on firebase. It can be a way to run functions without using a user account inside the app.<br/>
+Firstly, we'll install firebase-tools<br/>
+<br/>
+<tt><span style="color: #00007f">npm i -g firebase-tools</span></tt><br/>
+<br/>
+We then run the command <tt><span style="color: #00007f">firebase login</span>, <span style="color: #00007f">firebase init </span></tt>&amp;<span style="color: #00007f"><tt>&nbsp;firebase deploy</tt></span><br/>
+<br/>
+<b>Create a function<br/>
+<br/>
+</b>To create a function, we'll go to the new folder functions/index.js<br/>
+<br/>
+<tt><span style="color: #00007f">exports.helloWorld = functions.https.onRequest((request, response) =&gt; {<ul><li style="list-style-type: none">response.send("Hello, Ninjas");</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">});</span></tt><br/>
+<br/>
+Then in the terminal we'll deploy the functions folder only<br/>
+<br/>
+<tt><span style="color: #00007f">firebase deploy --only functions</span></tt><br/>
+<br/>
+</body></html>

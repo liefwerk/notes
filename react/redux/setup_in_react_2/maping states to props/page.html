@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Maping States to Props</title>
+</head><body><b>Maping States to Props</b><br/>
+<br/>
+First, we import the connect funtion inside the Component we want to change<br/>
+<br/>
+<span style="color: #00007f"><tt>import { connect } from 'react-redux'</tt></span><br/>
+<br/>
+Then we invoke it as a Higher Order Component when exporting the Component and we pass a map function inside<br/>
+<br/>
+<span style="color: #007f7f"><tt>// connect(mapfunction(Component))</tt></span><br/>
+<span style="color: #00007f"><tt>export default connect(mapStateToProps)(Home)<br/>
+<br/>
+</tt></span>This means that our Component can now connect itself to Redux.<br/>
+Here's the function that we pass inside the connect function<br/>
+<br/>
+<span style="color: #007f7f"><tt>// it takes the state of the component and returns it in an object</tt></span><br/>
+<span style="color: #00007f"><tt>const mapStateToProps = (state) =&gt; {<br/>
+&nbsp; return {<br/>
+&nbsp; &nbsp; posts: state.posts<br/>
+&nbsp; }<br/>
+}<br/>
+<br/>
+</tt></span>Then inside the render() method of the Component, we pass the props like this<span style="color: #00007f"><br/>
+</span><span style="color: #00007f"><br/>
+<tt>const { posts } = this.props<br/>
+<br/>
+</tt></span><tt><span style="font-family: sans">When there is an array we need to loop through, the map function is our savior.<br/>
+<br/>
+</span><span style="color: #00007f">array.map(item =&gt;{<ul><li style="list-style-type: none">return (</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;tag attribute={item} key={item.id} /&gt;</li>
+</ul>
+</li>
+<li style="list-style-type: none">)</li>
+</ul>
+}<br/>
+<br/>
+{ projects &amp;&amp; projects.map(project =&gt;{<ul><li style="list-style-type: none">return (</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">&lt;ProjectSummary project={project} key={project.id} /&gt;</li>
+</ul>
+</li>
+<li style="list-style-type: none">)</li>
+</ul>
+})}<br/>
+</span></tt></body></html>

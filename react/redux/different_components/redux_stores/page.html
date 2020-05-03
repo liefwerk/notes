@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Redux Stores</title>
+</head><body><b>Redux Stores</b><br/>
+<br/>
+A central data store is a js object that represents the global state of our application.<br/>
+The reducer interacts with the central data store. State is always updated from this one single place.<br/>
+<br/>
+When we create a store, we pass a single recuder function. Then store knows wich one to follow.<br/>
+<br/>
+Here's an example with code snippets.<br/>
+<br/>
+<span style="font-family: monospace"><span style="color: #007f7f">// we load the function createStore</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">const { createStore } = Redux;<br/>
+<br/>
+</span><span style="color: #007f7f">//we initiate the state</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">const initState = {<ul><li style="list-style-type: none">todos: [],</li>
+<li style="list-style-type: none">posts: []</li>
+</ul>
+}<br/>
+<br/>
+</span><span style="color: #007f7f">// we create the reducer as a function that will pass the state and the action</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">function myreducer(state = initState, action){<br/>
+<br/>
+}<br/>
+<br/>
+</span><span style="color: #007f7f">// we create the store</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">const store = createStore(myreducer)</span></span></body></html>

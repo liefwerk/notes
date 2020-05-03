@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>React Router</title>
+</head><body><b>React Router<br/>
+<br/>
+</b>When we make a request, we make the initial request. We get a response, react looks at the response and loads a component for this request.<br/>
+Only injects the component it needs to.<br/>
+<br/>
+First, we install the package <tt><span style="color: #00007f">react-router-dom</span></tt><br/>
+<br/>
+<span style="color: #00007f"><tt>npm i react-router-dom</tt></span><br/>
+<br/>
+Then, at the bottom of App.js we inject<br/>
+<br/>
+<tt><span style="color: #00007f">import {BrowserRouter, Route} from "react-router-dom"</span></tt><br/>
+<br/>
+We create Links inside the JSX (navbar) in App.js<br/>
+<br/>
+<tt><span style="color: #00007f">&lt;BrowserRouter&gt;&lt;/BrowserRouter&gt;</span></tt><br/>
+<br/>
+and we set-up the routes and attach each component to its own route.<br/>
+<br/>
+<tt><span style="color: #00007f">&lt;Route exact path="/" component={Home}/&gt;<br/>
+&lt;Route path="/about" component={About}/&gt;<br/>
+</span></tt><tt><span style="color: #00007f">&lt;Route path="/contact" component={Contact}/&gt;</span></tt><br/>
+<br/>
+<i>The <tt>exact</tt>&nbsp;attribute is used when we want React to stop looking for the routes once it finds the right one for the request.<br/>
+Could be useful to restart the server, that might throw an error.</i></body></html>

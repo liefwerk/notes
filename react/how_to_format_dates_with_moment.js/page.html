@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>How to Format Dates with Moment.js</title>
+</head><body><b>How to format Dates<br/>
+<br/>
+</b>We'll use Moment.js to format the date, first let's install it with npm<br/>
+<br/>
+<tt><span style="color: #00007f">npm i moment</span></tt><br/>
+<br/>
+Then we import it inside the right component<br/>
+<br/>
+<tt><span style="color: #00007f">import moment from 'moment'<br/>
+<br/>
+</span></tt>Then where we output the date inside the JSX or HTML, we surround the toDate() with the moment() method.<br/>
+We can also add another method to structure the date, in this example we'll use calendar()<br/>
+More examples in the Moment.js reference file: https://momentjs.com/<br/>
+<br/>
+<tt><span style="color: #00007f">&lt;p className="grey-text"&gt;{<b>moment(project.createdAt.toDate()).calendar()</b>}&lt;/p&gt;</span></tt><br/>
+<br/>
+</body></html>

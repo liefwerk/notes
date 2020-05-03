@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Store Subscriptions</title>
+</head><body><b>Store Subscriptions<br/>
+<br/>
+</b>Here is the basic idea - listen to changes in the store the react to it.<b><br/>
+</b><b><br/>
+</b><span style="background-color: #ffffff"><tt><span style="color: #00007f">store.subscribe(() =&gt; {</span><ul><li style="list-style-type: none"><span style="color: #007f7f">// function fires everytime there is a change</span></li>
+<span style="color: #00007f"><li style="list-style-type: none">console.log('state updated');</li>
+</span><li style="list-style-type: none"><span style="color: #007f7f">// to access the state we do store.getState()</span></li>
+<span style="color: #00007f"><li style="list-style-type: none">console.log('store.getState()');</li>
+</span></ul>
+<span style="color: #00007f">})<br/>
+<br/>
+</span></tt></span>The problem is that the state (object with todos and posts) get overridden by the new one.<br/>
+We also pass the data that we don't want to change.<br/>
+<br/>
+In the myreducer function, we pass the full state as a spread operator<br/>
+<br/>
+<tt><span style="background-color: #ffffff"><span style="color: #007f7f">// we create the reducer as a function that will pass the state and the action</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">function myreducer(state = initState, action){</span><ul><li style="list-style-type: none"><span style="color: #00007f">// if action type is add todo</span></li>
+<span style="color: #00007f"><li style="list-style-type: none">if (action.type == 'ADD_TODO'){</li>
+</span><li style="list-style-type: none"><ul><li style="list-style-type: none"><span style="color: #007f7f">// we return the new state and edit it</span></li>
+<span style="color: #00007f"><li style="list-style-type: none">return {</li>
+</span><li style="list-style-type: none"><ul><li style="list-style-type: none"><span style="color: #007f7f">// we create a new array to edit in a non-destructive way</span></li>
+<span style="color: #00007f"><li style="list-style-type: none">...state,todos: [...state.todos, action.todo]</li>
+</span></ul>
+</li>
+<span style="color: #00007f"><li style="list-style-type: none">}</li>
+</span></ul>
+</li>
+<span style="color: #00007f"><li style="list-style-type: none">}</li>
+<li style="list-style-type: none">// if action type is add post</li>
+<li style="list-style-type: none">if (action.type == 'ADD_TODO'){</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none"><span style="color: #007f7f">// we return the new state and edit it</span></li>
+<li style="list-style-type: none">return {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none"><span style="color: #007f7f">// we create a new array to edit in a non-destructive way</span></li>
+<li style="list-style-type: none">...state,</li>
+<li style="list-style-type: none">posts: [...state.posts, action.posts]</li>
+</ul>
+</li>
+<li style="list-style-type: none">}</li>
+</ul>
+</li>
+</span></ul>
+<span style="color: #00007f">}<br/>
+}<br/>
+<br/>
+</span><span style="font-family: sans">To keep on going with the examples, here's a couple of actions:</span><br/>
+<br/>
+</span></tt><span style="color: #00007f"><span style="font-family: monospace">store.dispatch({type: 'ADD_TODO', todo: 'buy milk'});<br/>
+store.dispatch({type: 'ADD_TODO', todo: 'sleep some more'});<br/>
+store.dispatch({type: 'ADD_TODO', post: 'Egg hunt with yoshi'});</span></span></body></html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Route Garding</title>
+</head><body><b>Route Garding<br/>
+<br/>
+</b>What if we want to keep users that do not have any account from viewing certain parts of the website ?<br/>
+We can set up some rules by mapping the state to the props of the component to get the auth prop:<br/>
+<br/>
+<tt><span style="color: #00007f">const mapStateToProps = (state) =&gt; { &nbsp;<ul><li style="list-style-type: none">return {</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">auth: state.firebase.auth</li>
+</ul>
+</li>
+<li style="list-style-type: none">}</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">}</span></tt><br/>
+<br/>
+We then pass that mapStateToProps() function into the connect HOC<br/>
+<br/>
+<tt><span style="color: #00007f">export default connect(mapStateToProps, mapDispatchToProps)(CreateProject)</span></tt><br/>
+<br/>
+And finally we acces the props and add an if statement to check if we are logged in<br/>
+<br/>
+<span style="color: #00007f"><tt>const { auth } = this.props<br/>
+if (!auth.uid) return &lt;Redirect to='/signin' /&gt;</tt></span></body></html>

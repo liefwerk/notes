@@ -1,0 +1,12 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Async Code with Redux</title>
+</head><body><b>Async Code with Redux</b><br/>
+<br/>
+The problem here is that if we want to use data from an external source, placing it inside the reducer file won't work. The reason is that this process takes longer than the reducer's task, which will therefor update the central state without our external data.<br/>
+<br/>
+The solution relies on installing <b>Thunk</b>, a middleware and place it's process between the moment we dispatch the action and we receive that action in the reducer method. It will perform an asynchronous task inside the action creator.<br/>
+<br/>
+<b>Thunk</b>&nbsp;will hold the dispatch, perform the async request and resume the dispatch.</body></html>

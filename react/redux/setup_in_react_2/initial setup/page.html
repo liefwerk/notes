@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Initial Setup</title>
+</head><body><b>Initial Setup<br/>
+<br/>
+</b>First we install the packages required to start coding<br/>
+<br/>
+<span style="font-family: monospace"><span style="color: #00007f">npm i redux react-redux</span></span><br/>
+<br/>
+Then we import the library into the index.js file<br/>
+<br/>
+<span style="font-family: monospace"><span style="color: #00007f">import { createStore } from 'redux'<br/>
+</span></span><span style="font-family: monospace"><span style="color: #00007f">import { Provider } from 'react-redux'</span></span><br/>
+<br/>
+We create the store with that function, and inside we'll pass the reducer (function that handles the changes)<br/>
+<br/>
+<span style="font-family: monospace"><span style="color: #00007f">const store = createStore(rootReducer);</span></span><br/>
+<br/>
+To activate the store, we wrap the <span style="font-family: monospace"><span style="color: #00007f">&lt;App /&gt;</span></span>&nbsp;tag with <span style="font-family: monospace"><span style="color: #00007f">&lt;Provider store={store}&gt;&lt;/Provider&gt;.<br/>
+</span></span><span style="font-family: monospace"><span style="color: #00007f"><br/>
+</span></span>Then, we create the reducer in another file that we can call rootReducer. It is recommended to have differents reducers for different tasks.<br/>
+<br/>
+<span style="color: #00007f"><tt>const initState = {<br/>
+&nbsp; posts: []<br/>
+}<br/>
+<br/>
+const rootReducer = (state = initState, action) =&gt; {<br/>
+&nbsp; return state;<br/>
+}<br/>
+<br/>
+export default rootReducer</tt></span></body></html>

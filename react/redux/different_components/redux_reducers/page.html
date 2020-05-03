@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Redux Reducers</title>
+</head><body><b>Redux Reducers<br/>
+</b><br/>
+Reducers are used to interact with the data center.<br/>
+<br/>
+<span style="background-color: #ffffff"><tt><span style="color: #007f7f">// we create the reducer as a function that will pass the state and the action</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">function myreducer(state = initState, action){</span><ul><span style="color: #00007f"><li style="list-style-type: none">if (action.type == 'ADD_TODO'){</li>
+</span><li style="list-style-type: none"><ul><li style="list-style-type: none"><span style="color: #007f7f">// we return the new state and edit it</span></li>
+<span style="color: #00007f"><li style="list-style-type: none">return {</li>
+</span><span style="color: #007f7f"><li style="list-style-type: none">// we create a new array to edit in a non-destructive way</li>
+</span><li style="list-style-type: none"><ul><li style="list-style-type: none"><span style="color: #00007f">state,</span></li>
+<span style="color: #00007f"><li style="list-style-type: none">todos: [...state.todos, action.todo]</li>
+</span></ul>
+</li>
+<span style="color: #00007f"><li style="list-style-type: none">}</li>
+</span></ul>
+</li>
+<span style="color: #00007f"><li style="list-style-type: none">}</li>
+</span></ul>
+<span style="color: #00007f">}<br/>
+<br/>
+</span></tt><b>Root Reducer<br/>
+<br/>
+</b>If we have a few reducers, it is good practice to dedicate a single file to each of them and then merge them inside a rootReducer.js file.<br/>
+Here's a code excerpt from a standart rootReducer.js file:<br/>
+<br/>
+<tt><span style="color: #007f7f">// we import the other reducers</span></tt><br/>
+<tt><span style="color: #00007f">import authReducer from './authReducer'<br/>
+import projectReducer from './projectReducer'<br/>
+</span><span style="color: #007f7f">// we import the combineReducer method</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">import &nbsp;{ combineReducers } from 'redux'<br/>
+<br/>
+</span><span style="color: #007f7f">// we create the rootReducer</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">const rootReducer = combineReducers({<ul><li style="list-style-type: none">auth: authReducer,</li>
+<li style="list-style-type: none">project: projectReducer</li>
+</ul>
+})<br/>
+<br/>
+</span><span style="color: #007f7f">// we export it</span><span style="color: #00007f"><br/>
+</span><span style="color: #00007f">export default rootReducer<br/>
+<br/>
+</span></tt>We then import it to the index.js file<span style="color: #00007f"><br/>
+</span><span style="color: #00007f"><br/>
+<tt>import rootReducer from '/store/reducers/rootReducer'</tt><br/>
+<br/>
+</span>and pass it inside the createStore method<span style="color: #00007f"><br/>
+</span><span style="color: #00007f"><br/>
+<tt>const store = createStore(rootReducer);</tt></span></span></body></html>

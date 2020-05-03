@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Adding Data to Firestore</title>
+</head><body><b>Adding Data to Firestore<br/>
+<br/>
+</b>In order to add data to firestore, we'll first initialize the <tt><span style="color: #00007f">getFirestore()</span></tt>&nbsp;function<br/>
+<br/>
+<tt><span style="color: #00007f">const firestore = getFirestore();</span></tt><br/>
+<br/>
+That gives us a reference to the Firestore database.<br/>
+<br/>
+<tt><span style="color: #00007f">firestore.collection('projects')</span></tt><br/>
+<br/>
+To add a new document we do this<br/>
+<br/>
+<tt><span style="color: #00007f">firestore.collection('projects').add({<ul><li style="list-style-type: none">...project,</li>
+<li style="list-style-type: none">authorFirstName: 'Net',</li>
+<li style="list-style-type: none">authorListName: 'Ninja',</li>
+<li style="list-style-type: none">authorId: 12345,</li>
+<li style="list-style-type: none">createdAt: new Date()</li>
+</ul>
+})<br/>
+</span></tt><br/>
+All this data is going to our Firestore and be added as a new document inside our collection.<br/>
+That will also generate a new document id.<br/>
+<br/>
+Because it's going to take some time to do, it'ss take a promise (asynchronous method).<br/>
+We can use .<tt><span style="color: #00007f">then() </span></tt>and a callback function<br/>
+<br/>
+<tt><span style="color: #00007f">firestore.collection('projects').add({<ul><li style="list-style-type: none">...project,</li>
+<li style="list-style-type: none">authorFirstName: 'Net',</li>
+<li style="list-style-type: none">authorListName: 'Ninja',</li>
+<li style="list-style-type: none">authorId: 12345,</li>
+<li style="list-style-type: none">createdAt: new Date()</li>
+</ul>
+}).then(() =&gt; {<ul><li style="list-style-type: none">dispatch({ type: 'CREATE_PROJECT', project })</li>
+</ul>
+}).catch((err) =&gt; {<ul><li style="list-style-type: none">dispatch({ type: 'CREATE_PROJECT_ERROR', err})</li>
+</ul>
+})<br/>
+<br/>
+</span></tt>In our projectReducer.js we can add these nex actions to our switch function<br/>
+<br/>
+<tt><span style="color: #00007f">const projectReducer = (state = initState, action) =&gt; {<ul><li style="list-style-type: none">switch (action.type){</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">case 'CREATE_PROJECT': </li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">return state;</li>
+</ul>
+</li>
+<li style="list-style-type: none">case 'CREATE_PROJECT_ERROR':</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">console.log('create project error', action.err);</li>
+<li style="list-style-type: none">return state;</li>
+</ul>
+</li>
+<li style="list-style-type: none">default:</li>
+<li style="list-style-type: none"><ul><li style="list-style-type: none">return state;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li style="list-style-type: none">}</li>
+</ul>
+</span></tt><tt><span style="color: #00007f">}</span></tt><ul><li style="list-style-type: none"></li>
+</ul>
+<tt><span style="color: #00007f"><br/>
+</span></tt><br/>
+</body></html>

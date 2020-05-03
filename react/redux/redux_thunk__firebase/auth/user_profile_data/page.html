@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>User Profile Data</title>
+</head><body><b>User Profile Data<br/>
+<br/>
+</b>The user data store in firestore isn't always synced in in our state, we have to manually sync it in to use it in our component.<br/>
+Firstly in index.js we pass a constant with a few configs to access that profile from firestore<br/>
+<br/>
+<tt><span style="color: #00007f">const <b>profileSpecificProps</b>&nbsp;= {<ul><li style="list-style-type: none">userProfile: 'users',</li>
+<li style="list-style-type: none">useFirestoreForProfile: true,</li>
+<li style="list-style-type: none">enableRedirectHandling: false,</li>
+<li style="list-style-type: none">resetBeforeLogin: false</li>
+</ul>
+}<br/>
+</span></tt><br/>
+We then pass the const inside the config<br/>
+<br/>
+<tt><span style="color: #00007f">const rrfProps = {<br/>
+&nbsp; firebase,<br/>
+&nbsp; <b>config: profileSpecificProps</b>,<br/>
+&nbsp; dispatch: store.dispatch,<br/>
+&nbsp; createFirestoreInstance,<br/>
+</span></tt><tt><span style="color: #00007f">}</span></tt><br/>
+<br/>
+Inside Navbar.jr we pass it inside the props objects<br/>
+<br/>
+<tt><span style="color: #00007f">const mapStateToProps = (state) =&gt; {<br/>
+&nbsp; return {<br/>
+&nbsp; &nbsp; auth: state.firebase.auth,<br/>
+<b>&nbsp; &nbsp; profile: state.firebase.profile</b><br/>
+&nbsp; }<br/>
+</span></tt><tt><span style="color: #00007f">}</span></tt><br/>
+<br/>
+And load in into the <tt><span style="color: #00007f">&lt;SignedInLinks&gt;</span></tt>&nbsp;component as a prop<br/>
+<br/>
+<tt><span style="color: #00007f">const { auth, profile } = props<br/>
+const links = auth.uid ? &lt;SignedInLinks <b>profile={profile}</b>&nbsp;/&gt; : &lt;SignedOutLinks /&gt;<br/>
+<br/>
+</span></tt>Inside that component, we use the prop to show the initials<br/>
+<br/>
+<tt><span style="color: #00007f">&lt;li&gt;&lt;NavLink to='/' className="btn btn-floating pink lighten-1"&gt;<b>{props.profile.initials}</b>&lt;/NavLink&gt;&lt;/li&gt;</span></tt></body></html>
