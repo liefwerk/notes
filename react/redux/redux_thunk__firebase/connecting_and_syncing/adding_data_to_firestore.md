@@ -48,7 +48,7 @@ firestore.collection('projects').add({
 })
 ```
 
-In our projectReducer.js we can add these nex actions to our switch function
+In our projectReducer.js we can add these next actions to our switch function
 
 ```
 const projectReducer = (state = initState, action) => {
