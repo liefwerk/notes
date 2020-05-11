@@ -3,12 +3,12 @@
 One one page served to the browser from the server. We only update the content delivered to the user.
 React takes over the app before it reaches the server.
 
-**Types of files**
+## types of files
 
 In the folder /src we create another folder js/components. Inside, we put the file App.js
 This is the Root Component.
 
-```
+```js
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
@@ -33,12 +33,12 @@ wrapper ? ReactDOM.render(<App/>, wrapper) : false;
 
 ```
 
-**Nesting Components**
+## Nesting Components
 
 We have to nest the others components inside the root component.
 We can switch these components.
 
-```
+```js
 import React, { Component } from 'react'
 
 classNinjas extends Component {

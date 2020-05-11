@@ -13,7 +13,7 @@ Checks the type, takes the payload and make the change to the central store.
 **3- Then we get the updated props inside the component.**
 Creating the mapDispatchToProps function
 
-```
+```js
 // the function takes the dispatch as a parameter
 const mapDispatchToProps = (dispatch) => {
 
@@ -32,7 +32,7 @@ We then pass the `mapDispatchToProps()` function inside the `connect()` function
 
 Inside the JSX we create a button that will fire the `deletePost()` function
 
-```
+```js
 <div className="center">
 
     <button className="btn grey" onClick={this.handleClick}>Delete Post</button>
@@ -42,7 +42,7 @@ Inside the JSX we create a button that will fire the `deletePost()` function
 
 Then we create athat `handleClick()` function
 
-```
+```js
 handleClick = () => {
 
     this.props.deletePost(this.props.post.id)
@@ -52,9 +52,8 @@ handleClick = () => {
 
 We then go to the rootReducer.js file that will handle the next steps.
 
-```
-const rootReducer = (state = initState, action) => { 
-
+```js
+const rootReducer = (state = initState, action) => {
     // check the type of action
     if (action.type === 'DELETE_POST'){// we'lluse the filter method
         let newPosts = state.posts.filter(post => {
@@ -66,8 +65,6 @@ const rootReducer = (state = initState, action) => {
             posts: newPosts
         }
     }
-    
     return state;
-
 }
 ```

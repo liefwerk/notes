@@ -8,7 +8,7 @@ Once the project is created, we install firebase using npm
 
 Then we copy the JS configuration from our firebase account
 
-```
+```js
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'

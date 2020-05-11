@@ -2,7 +2,7 @@
 
 We have a **Mounting**, **Updating** and **Unmounting** phase.
 
-**Mounting**
+## Mouting
 
 When it is first created and mounted.
 
@@ -18,7 +18,7 @@ Only required method in the component, will return some form of JSX.
 Then we get `ComponentDidMount()`
 Fires once component is mounted - good to get exterior data like from a database.
 
-**Updating**
+## Updating
 
 First method is `getDerivedStateFromProps()`
 
@@ -34,19 +34,19 @@ We get values such as the window position, and return it inside the method. Meth
 Then `ComponentDidUpdate()` that is called after template is rendered. Good place to get external data.
 If we update state inside this hook, we could get an inifite loop.
 
-*Examples*
+### Examples
 
-**componentDidMount**
+#### componentDidMount
 
-```
+```js
 componentDidMount(){
     console.log('componentmounted');
 }
 ```
 
-**componentDidUpdate**
+#### componentDidUpdate
 
-```
+```js
 componentDidUpdate(prevProps,prevState){
     console.log("componentupdated");
     console.log(prevProps,prevState);

@@ -7,7 +7,7 @@ When we create a store, we pass a single recuder function. Then store knows wich
 
 Here's an example with code snippets.
 
-```
+```js
 // we load the function createStore
 const { createStore } = Redux;
 

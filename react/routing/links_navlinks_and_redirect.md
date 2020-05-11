@@ -36,7 +36,7 @@ Then the HOC wrappes the Component in the export function
 
 Here's a custom one created for the example:
 
-```
+```js
 import React from 'react'
 
 const Rainbow = (WrappedComponent) => {
@@ -49,10 +49,8 @@ const Rainbow = (WrappedComponent) => {
         'green',
         'yellow'
     ]
-    
     const randomColour = colours[Math.floor(Math.random() 5)]
     const className = randomColour + '-text'
-    
     return (props) => {
         return (
             <div className = {className}>
@@ -68,7 +66,7 @@ export default Rainbow
 
 When we return, we include the props and inside the tag `WrappedComponent` the spread the props like this:
 
-```
+```js
 
 {...props}
 ```

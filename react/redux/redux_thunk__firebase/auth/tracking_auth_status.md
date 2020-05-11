@@ -2,7 +2,7 @@
 
 In Navbar.js we'll pass the props and use a turnary operator to show the appropriated links
 
-```
+```js
 const { auth } = props
 const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
 ```

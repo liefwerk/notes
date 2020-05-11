@@ -17,7 +17,7 @@ We create Links inside the JSX (navbar) in App.js
 
 and we set-up the routes and attach each component to its own route.
 
-```
+```js
 <Route exact path="/" component={Home}/>
 <Route path="/about" component={About}/>
 <Route path="/contact" component={Contact}/>

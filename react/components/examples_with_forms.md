@@ -1,7 +1,8 @@
 # Example with Forms
-## An example for a Form
 
-```
+## An example
+
+```js
 // We import React
 import React, { Component } from "react"
 

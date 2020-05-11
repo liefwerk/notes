@@ -23,7 +23,7 @@ That function will return another function that takes the dispatch and the state
 
 Inside the dispatch function, we'll create the object with it's type and it's content.export const createProject = (project) => {
 
-```
+```js
 return (dispatch, getState) => {
     // make async call to database
     dispatch({ type: 'CREATE_PROJECT', project })
@@ -33,7 +33,7 @@ return (dispatch, getState) => {
 Once the `createProject` function is created, we import it in the components that will be allowed to modify the state.
 We'll be using the `mapDispatchToProps` function, it is constructed as follows:
 
-```
+```js
 const mapDispatchToProps = (dispatch) => {
 return {
 
@@ -47,20 +47,19 @@ export default connect(null, mapDispatchToProps)(CreateProject)
 
 To call the function, we load it from the state
 
-```
+```js
 this.props.createProject(this.state)
 ```
 
 Then, that action is receives by a reducer and will return the state depending of the action type.
 
-```
+```js
 const projectReducer = (state = initState, action) => {
 
     switch (action.type){
     case 'CREATE_PROJECT':
         console.log('project created', action.project);
     }
-    
     return state
 
 }

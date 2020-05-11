@@ -7,7 +7,7 @@ To request data from an external server, we can install an external package call
 First, if needed we convert the function into a class and insert the method `ComponentDidMount()`
 Inside, we call the get function from axios:
 
-```
+```js
 axios.get('https://jsonplaceholder.typicode.com/posts', { crossdomain: true })
 
 .then(res => {
@@ -19,12 +19,11 @@ posts: res.data.slice(0, 10)
 })
 ```
 
-
 `crossdomain: true` is useful when it isn't from the same domain, otherwise it might throw an error.
 
 Then after the render, we create an array with all these posts (with the turnary operator to handle when they are no posts.)
 
-```
+```js
 const { posts } = this.state
 const postList = posts.length ? (
 
@@ -39,6 +38,5 @@ const postList = posts.length ? (
         )
     }) : (
     <div className="center">No posts yet.</div>
-    
 )
 ```

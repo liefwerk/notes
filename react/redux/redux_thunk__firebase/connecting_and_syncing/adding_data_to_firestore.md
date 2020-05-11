@@ -10,7 +10,7 @@ That gives us a reference to the Firestore database.
 
 To add a new document we do this
 
-```
+```js
 firestore.collection('projects').add({
 
     ...project,
@@ -18,7 +18,6 @@ firestore.collection('projects').add({
     authorListName: 'Ninja',
     authorId: 12345,
     createdAt: new Date()
-    
 })
 ```
 
@@ -28,7 +27,7 @@ That will also generate a new document id.
 Because it's going to take some time to do, it'ss take a promise (asynchronous method).
 We can use .then() and a callback function
 
-```
+```js
 firestore.collection('projects').add({
 
     ...project,
@@ -36,21 +35,18 @@ firestore.collection('projects').add({
     authorListName: 'Ninja',
     authorId: 12345,
     createdAt: new Date()
-    
 }).then(() => {
 
     dispatch({ type: 'CREATE_PROJECT', project })
-    
 }).catch((err) => {
 
     dispatch({ type: 'CREATE_PROJECT_ERROR', err})
-    
 })
 ```
 
 In our projectReducer.js we can add these next actions to our switch function
 
-```
+```js
 const projectReducer = (state = initState, action) => {
 
     switch (action.type){

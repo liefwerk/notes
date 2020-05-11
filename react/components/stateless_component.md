@@ -17,9 +17,9 @@ UI Component:
 * only concerned with UI
 * use functions to create, not classes
 
-Example:
+## Example
 
-```
+```js
 const Ninjas = (props) => {
     const { ninjas } = props;
 }
@@ -27,7 +27,7 @@ const Ninjas = (props) => {
 
 It also is possible to do it the destructuring way:
 
-```
+```js
 const Ninjas = ({ninjas}) => {
 
 }

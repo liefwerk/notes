@@ -1,9 +1,10 @@
 # Format Dates
+
 ## How to format Dates with Moment.js
 
 We'll use Moment.js to format the date, first let's install it with `npm`
 
-```
+```js
 npm i moment
 ```
 

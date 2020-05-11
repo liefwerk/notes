@@ -1,4 +1,5 @@
-# Security Rules Firestore
+# Security Rules in Firestore
+
 ## Security Rules
 
 There are a way to hide our data, documents from others.
@@ -8,11 +9,11 @@ The way we declare rules is to match certain paths and declare rules for these p
 
 `service cloud.firestore {}` stores rules for the firestore only.
 
-`match /databases/{database}/documents {} `means that rule should reach any firestore database in our project
+`match /databases/{database}/documents {}` means that rule should reach any firestore database in our project
 
 `match /{document=**}{}` is saying match any documents in the database
 
-and the rules applied say this: 
+and the rules applied say this:
 
 `allow read, write: if request.time < timestamp.date(2020, 5, 27);`
 
@@ -20,7 +21,7 @@ which allow anyone to rad and write our documents. Once we go into production, w
 
 Here are the rules that we'll add
 
-```
+```js
 match /projects/{project} {
 
     allow read, write: if request.auth.uid != null

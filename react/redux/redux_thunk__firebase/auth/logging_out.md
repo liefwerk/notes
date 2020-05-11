@@ -1,9 +1,10 @@
 # Logging Out
+
 ## Creation of the Logging Out Component
 
 Firstly, we add an action
 
-```
+```js
 export const signOut = () => {
     return (dispatch, getState) => {
         firebase.auth().signOut().then(() => {
@@ -15,7 +16,7 @@ export const signOut = () => {
 
 Then we write the cases in the switch method of the authReducer.js file
 
-```
+```js
 switch {
 case 'SIGNOUT_ERROR':
     console.log('signout error');
@@ -35,7 +36,7 @@ case 'SIGNOUT_SUCCESS':
 
 We then connect it as an HOC to the right component, `mapDispatchToProps`, import the props and pass that function (that is inside the props)
 
-```
+```js
 // let's not forget to pass the props
 const SignedInLinks = (props) => {
 

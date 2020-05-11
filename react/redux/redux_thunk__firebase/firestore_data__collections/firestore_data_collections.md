@@ -6,7 +6,8 @@ Each document looks like a JS object (key and pairs).
 
 We'll use 3 collections:
 
-**Project collections**
+## Project collections
+
 * title
 * content
 * authorFirstName
@@ -14,8 +15,10 @@ We'll use 3 collections:
 * authorId
 * timestamp
 
-**User collection**
+## User collection
+
 info about app users
 
-**Notidifations Collection**
+## Notidifations Collection
+
 info about notifications

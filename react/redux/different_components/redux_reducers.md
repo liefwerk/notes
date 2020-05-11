@@ -2,7 +2,7 @@
 
 Reducers are used to interact with the data center.
 
-```
+```js
 // we create the reducer as a function that will pass the state and the action
 function myreducer(state = initState, action){
     if (action.type == 'ADD\_TODO'){// we return the new state and edit it
@@ -18,7 +18,7 @@ function myreducer(state = initState, action){
 If we have a few reducers, it is good practice to dedicate a single file to each of them and then merge them inside a rootReducer.js file.
 Here's an excerpt from a standart rootReducer.js file:
 
-```
+```js
 // we import the other reducers
 import authReducer from './authReducer'
 import projectReducer from './projectReducer'
@@ -39,7 +39,7 @@ export default rootReducer
 
 We then import it to the index.js file
 
-```
+```js
 import rootReducer from '/store/reducers/rootReducer'
 ```
 

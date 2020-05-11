@@ -2,12 +2,11 @@
 
 First, let's create the action:
 
-```
+```js
 export const signUp = (newUser) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
         const firebase = getFirebase();
         const firestore = getFirestore();
-        
         firebase.auth().createUserWithEmailAndPassword(
             newUser.email,
             newUser.password
@@ -29,7 +28,7 @@ export const signUp = (newUser) => {
 
 We then handle it inside our Reducer
 
-```
+```js
 case 'SIGNUP_ERROR':
 console.log('signup error');
     return {
@@ -46,7 +45,7 @@ case 'SIGNUP_SUCCESS':
 
 Then in the SignUp.js component we add the dispatch to props
 
-```
+```js
 const mapDispatchToProps = (dispatch) => {
     return {
         signUp: (newUser) => dispatch(signUp(newUser))
@@ -56,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
 
 and we pass the state in the function in the `handleSubmit()` function
 
-```
+```js
 handleSumbit = (e) => {
 
 e.preventDefault();

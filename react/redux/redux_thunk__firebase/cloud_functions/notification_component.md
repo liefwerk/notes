@@ -11,7 +11,7 @@ then we initialize the app with the config
 
 and we create/export the cloud function
 
-```
+```js
 exports.projectCreated = functions.firestore
 
 .document('projects/{projectId}')
@@ -30,7 +30,7 @@ return createNotification(notification)
 
 That function needs to return a notification, to do that we'll first create a `createNotification()` function
 
-```
+```js
 const createNotification = (notification => {
 
 return admmin.firestore().collection('notifications')

@@ -7,7 +7,7 @@ If we cant to dispatch the same action in a few components it gets easier.
 
 First let's create a new folder actions in which we'll place a new file called postActions.js. Inside that file we'll create an action called `deletePost()`
 
-```
+```js
 export const deletePost = (id) => {
 
     return {
@@ -20,13 +20,13 @@ export const deletePost = (id) => {
 
 We import that new function in the Post.js file:
 
-```
+```js
 import { deletePost } from '../actions/postActions'
 ```
 
 Then we can edit our mapDispatchToProps() function to include that new action
 
-```
+```js
 const mapDispatchToProps = (dispatch) => {
 
     return{

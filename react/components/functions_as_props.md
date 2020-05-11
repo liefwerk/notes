@@ -1,10 +1,9 @@
 # Functions as Props
-## Functions as Props
 
 First, we create a function called `addNinja()`
 Then we import the file addNinja.js with the function inside
 
-```
+```js
 import AddNinja from './components/addNinja.js
 ```
 
@@ -19,7 +18,7 @@ Important, if we touch an array and want to add or delete, the best way is to co
 
 Then we pass it as the state of the Component
 
-```
+```js
 this.setState({ ninjas: ninjas })
 
 // if the new props have the same name, it is possible to do it this way

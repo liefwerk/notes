@@ -6,7 +6,8 @@ Each document looks like a JS object (key and pairs).
 
 We'll use 3 collections:
 
-**Project collections**
+## Project collections
+
 * title
 * content
 * authorFirstName

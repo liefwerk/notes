@@ -9,7 +9,7 @@ In App.js we create a route for the component that will show the post.
 
 Then we create Post.js, inside we create an id and pass it as a variable.
 
-```
+```js
 import React, { Component } from 'react'
 
 class Post extends Component {
@@ -52,7 +52,7 @@ In the Post.js component, we create a state with the post
 
 Then in `componentDidMount()`
 
-```
+```js
 componentDidMount(){
 
     let id = this.props.match.params.post_id;
@@ -69,7 +69,7 @@ componentDidMount(){
 We then use a turnary operator in the render method to check if there are posts or not.
 If there are post, we print them.
 
-```
+```js
 const post = this.state.post ? (
 
     <div className="post">
@@ -79,7 +79,6 @@ const post = this.state.post ? (
     ) : (
         <div className="center">Loading posts...</div>
     )
-    
     return(
         <div className="container">
             <h4>{ post }</h4>

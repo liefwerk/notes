@@ -11,7 +11,7 @@ We then run the command firebase login, firebase init & firebase deploy
 
 To create a function, we'll go to the new folder functions/index.js
 
-```
+```js
 exports.helloWorld = functions.https.onRequest((request, response) => {
     response.send("Hello, Ninjas");
 });
