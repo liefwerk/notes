@@ -2,7 +2,7 @@
 
 To use a number in Ruby is super easy
 
-```
+```ruby
 puts 3
 puts 4.983
 puts -947
@@ -10,7 +10,7 @@ puts -947
 
 Basic math also works
 
-```
+```ruby
 puts 5+4
 puts 3/4
 puts 2**3
@@ -18,19 +18,19 @@ puts 2**3
 
 that last one is a way to put the number to the raised power like 2^3.
 
-```
+```ruby
 puts 10 % 3
 ```
 
 that will spit our the remainder
 
-```
+```ruby
 1
 ```
 
 If we want to print a number paired with a string, we have to convert that number into a string.
 
-```
+```ruby
 num = 12
 puts ("my favorite number is " + num.to_s)
 ```
@@ -39,7 +39,7 @@ puts ("my favorite number is " + num.to_s)
 
 Methods to help us do more operations
 
-```
+```ruby
 num = 12
 puts math.sqrt(36)
 ```

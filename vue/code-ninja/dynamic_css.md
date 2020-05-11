@@ -2,9 +2,11 @@
 
 We can  change the classes dynamicaly.
 
-```
+```html
 <div class="" :class="{available: available}"></div>
+```
 
+```js
 new Vue({
     // targets <div class="" id="vue-app"></div>
     el: '#vue-app',
@@ -18,7 +20,8 @@ new Vue({
 ```
 
 We could also pass the classes as an object from a function into the div
-```
+
+```js
 
 computed: {
     // the classes are passed as an object here
@@ -29,7 +32,9 @@ computed: {
         }
     }
 }
+```
 
+```html
 // we add an event on click with @click to change the boolean variables nearby and available
 <button @click="nearby = !nearby">Toggle nearby</button>
 <button @click="available = !available">Toggle available</button>

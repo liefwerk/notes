@@ -2,9 +2,9 @@
 
 Let's learn about the different variables in Ruby.
 
-**Text variables**
+## Text variables
 
-```
+```ruby
 character_name = "John"
 character_age = "35"
 

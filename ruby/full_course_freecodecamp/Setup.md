@@ -1,5 +1,4 @@
-# setup
-## Setup of Ruby
+# Setup of Ruby
 
 **Hello world time !**
 
@@ -11,11 +10,11 @@ We should see `Hello World` in the debugger.
 
 `print "mytext"` will print the next one in the same line
 
-### Drawing up a shape
+## Drawing up a shape
 
 Let's draw a basic shape:
 
-```
+```ruby
 puts "   /|"
 puts "  / |"
 puts " /  |"
@@ -24,7 +23,7 @@ puts "/___|"
 
 and this prints
 
-```
+```ruby
    /|
   / |
  /  |

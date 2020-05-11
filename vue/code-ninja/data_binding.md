@@ -3,7 +3,7 @@
 We've seen how to output data from an instance.
 We can bind properties to any HTML tag with v-bind:
 
-```
+```js
 new Vue({
 
 // targets <div class="" id="vue-app"></div>

@@ -2,7 +2,7 @@
 
 Very useful to loop inside a collection.
 
-```
+```ruby
 friends = ["Thomas", "Amaury", "Yann", "Maxence", "Antoine", "Alexandre"]
 
 for friend in friends
@@ -12,7 +12,7 @@ end
 
 It also is possible to loop through it with `.each`
 
-```
+```ruby
 friends.each do |friend|
     puts friend
 end
@@ -20,7 +20,7 @@ end
 
 If we want to choose the number of times we want to loop
 
-```
+```ruby
 for index in 0..5
     puts index
 end
@@ -28,7 +28,7 @@ end
 
 that prints
 
-```
+```ruby
 0
 1
 2
@@ -39,7 +39,7 @@ that prints
 
 Alternatively, we could write
 
-```
+```ruby
 6.times do |index|
     puts index
 end

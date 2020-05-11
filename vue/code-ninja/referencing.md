@@ -4,7 +4,7 @@
 
 With Vue gives us a way to reach into the template, grab an element and get data about this element.
 
-```js
+```html
 <input type="text" ref="input" />
 <button @click="readRefs"></button>
 ```

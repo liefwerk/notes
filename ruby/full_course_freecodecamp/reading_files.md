@@ -4,7 +4,7 @@ We can easily read files inside our program.
 
 First, we load the file using the `File.open()` method
 
-```
+```ruby
 File.open("employee.txt", "r") do |file|
 
 end

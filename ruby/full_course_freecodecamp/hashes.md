@@ -11,7 +11,7 @@ Let's build a hash that stores US Codes.
 
 To create an hash, we give it a name
 
-```
+```ruby
 states = {
     "Pennsylvania" => "PA",
     "New York" => "NY",
@@ -23,19 +23,19 @@ Each value can only have one key.
 
 Then we can print it out:
 
-```
+```ruby
 puts states["Oregon"]
 ```
 
 and that will print
 
-```
+```ruby
 OR
 ```
 
 Alternatively, we could format the keys this way
 
-```
+```ruby
 states = {
     :Pennsylvania => "PA",
     :New York => "NY",

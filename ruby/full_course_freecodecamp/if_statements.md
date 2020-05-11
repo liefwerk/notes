@@ -2,7 +2,7 @@
 
 If statements work as follow:
 
-```
+```ruby
 ismale = true
 
 if ismale
@@ -12,7 +12,7 @@ end
 
 `else` statements can handle other scenarios
 
-```
+```ruby
 ismale = true
 
 if ismale
@@ -24,7 +24,7 @@ end
 
 we could also work with two contitions with the word `and`
 
-```
+```ruby
 ismale = true
 istall = true
 
@@ -43,8 +43,7 @@ We can compoare different values inside the if statement.
 
 Let's create a methods called max. It will take numbers and return the largest one.
 
-```
+```ruby
 def max(num1, num2, num3)
-    
 end
 ```

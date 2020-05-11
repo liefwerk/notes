@@ -3,7 +3,7 @@
 Let's write information to files.
 We'll use another file mode to do that.
 
-```
+```ruby
 File.open("employee.txt", "r") do |file|
 
 end
@@ -11,7 +11,7 @@ end
 
 [Here's a reference from github](https://stackoverflow.com/questions/7085595/file-opening-mode-in-ruby/7085623#7085623)
 
-```
+```ruby
 File.open("index.html", "w") do |file|
     file.write("<h1>Hello</h1>")
 end

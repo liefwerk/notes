@@ -1,6 +1,6 @@
 # building_quizz
 
-```
+```ruby
 class Question
   attr_accessor :prompt, :answer
   def initialize(prompt, answer)

@@ -3,7 +3,7 @@
 A Mad Lib Game is a type of game that would switch the words inside a sentence.
 We can easily build that with a few lines of code.
 
-```
+```ruby
 puts "Roses are {color}"
 puts "{plural_noun} are blue"
 puts "I love {celebrity}"
@@ -11,7 +11,7 @@ puts "I love {celebrity}"
 
 First let's get the input from the user
 
-```
+```ruby
 puts "Enter a color"
 color = gets.chomp()
 puts "Enter a plural noun"
@@ -22,7 +22,7 @@ celebrity = gets.chomp()
 
 Now we have all three inputs. We then add the variables.
 
-```
+```ruby
 puts "Enter a color"
 color = gets.chomp()
 puts "Enter a plural noun"

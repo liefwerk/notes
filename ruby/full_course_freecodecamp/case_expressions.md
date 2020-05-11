@@ -3,12 +3,12 @@
 Very useful when we want to check a lot of different situations.
 Here's how we construct one.
 
-```
+```ruby
 def get_day_name(day)
   day_name = ""
 
   case day
-  when "mon" 
+  when "mon"
     day_name = "Monday"
   when "tue"
     day_name = "Tuesday"

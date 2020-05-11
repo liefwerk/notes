@@ -1,6 +1,6 @@
 # better_calculator
 
-```
+```ruby
 puts "Enter first number: "
 num1 = gets.chomp().to_f
 puts "Enter the operator"

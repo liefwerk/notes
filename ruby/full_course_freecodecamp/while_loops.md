@@ -1,6 +1,6 @@
 # while_loops
 
-```
+```ruby
 index = 1
 while index <=  5
     puts index
@@ -12,7 +12,7 @@ end
 
 We let the user keep guessing the word until they find it.
 
-```
+```ruby
 secret_word = "coronavirus"
 guess = ""
 
@@ -26,7 +26,7 @@ puts "Well done !"
 
 But what if we put a guess limit ?
 
-```
+```ruby
 # guessing game
 
 secret_word = "coronavirus"
