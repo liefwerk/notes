@@ -13,3 +13,5 @@ vue create hello-world
 ```
 
 You'll get prompted a few different options, these will depend of the size of your project and the tools that you know.
+
+[Check the documentation of VueJS here](https://cli.vuejs.org/guide/creating-a-project.html#vue-create)
