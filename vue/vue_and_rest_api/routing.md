@@ -62,3 +62,17 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 ```
+
+Lastly, to show these components, we have to add the `<router-view></router-view>` tag inside our template tag in App.vue.
+
+```html
+<template>
+  <div id="app">
+    <v-app>
+      <main>
+        <router-view></router-view>
+      </main>
+    </v-app>
+  </div>
+</template>
+```
