@@ -91,3 +91,11 @@ We create base.html and paste this inside
 {% endblock %}
 ```
 
+Then we go in the other template in which we'll write the other part of the HTML
+
+```htmldjango
+{% extends 'blog/base.html' %}
+{% block content %}
+  # there we place our html
+{% endblock content %}
+```
