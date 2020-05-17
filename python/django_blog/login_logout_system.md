@@ -41,14 +41,3 @@ We can redirect our users to the main page of our blog by editing the settings.p
 We'll add this snippet of code:
 
 `LOGIN_REDIRECT_URL = 'blog-home'`
-
-Now, in our user view we'll add a new view to our profile page.
-
-```py
-# we'll use a decotator to make that page only visible to loggedin users
-from django.contrib.auth.decorators import login_required
-
-@login_required
-def profile(request):
-  return render(request, 'users/profile.html')
-  ```
