@@ -31,6 +31,7 @@ We then create a `urls.py` file and populate it with this snippet of code to sta
 ```python
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.urls import path
 
 def home(request):
   return HttpResponse('<h1>Blog Home</h1>')
@@ -58,7 +59,7 @@ We just set it up on urls.py
 
 ```python
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url('', include('blog.urls'))
+    path('admin/', admin.site.urls),
+    path('', include('blog.urls'))
 ]
 ```

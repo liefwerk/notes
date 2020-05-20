@@ -12,11 +12,11 @@ This page is setup on the `urls.py` file.
 
 Here's a example
 
-``` python
-from django.conf.urls import url
+```python
+from django.urls import path
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
 ]
 ```
