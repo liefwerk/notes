@@ -15,7 +15,7 @@ from .models import Profile
 
 class UserRegisterForm(UserCreationForm):
   email = forms.EmailField()
-  
+
   class Meta:
     model = User
     fields = ['username', 'email', 'password1', 'password2']
@@ -52,13 +52,13 @@ def profile(request):
       return redirect('profile')
   else:
     u_form = UserUpdateForm(instance=request.user)
-    p_form = ProfileUpdateForm(instance=request.user.profile)  
-  
+    p_form = ProfileUpdateForm(instance=request.user.profile)
+
   context = {
     'u_form': u_form,
     'p_form': p_form
   }
-  
+
   return render(request, 'users/profile.html', context)
 ```
 
@@ -93,9 +93,9 @@ class Profile(models.Model):
   def __str__(self):
     return f'{self.user.username} Profile'
 
-  # our new save function  
-  def save(self):
-    super().save()
+  # our new save function
+    def save(self, *arg, **kwargs):
+        super().save(*arg, **kwargs)
 
     # here we get the updated image
     img = Image.open(self.image.path)

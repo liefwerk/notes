@@ -18,8 +18,14 @@ def register(request):
 ## Adding the form
 
 We can 'supercharge' the form, making its UI closer to a bootstrap styling.
-First, in `settings.py` we'll add this line of code to the installed apps
 
+First, we'll install `crispy_forms`
+
+```bash
+pip install django_crispy_forms
+```
+
+In `settings.py` we'll add this line of code to the installed app:
 `'crispy_forms',`
 
 We can now add the form inside the template `register.html`
