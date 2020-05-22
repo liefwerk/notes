@@ -1,5 +1,8 @@
 # Deployment on a Linux Server
 
+Let's learn how to deploy our django project into a linux server.
+We'll be using a Debian 9, NGINX and Gunicorn.
+
 ## SSH key based authorization
 
 Let's setup ssh key-based auth.
@@ -155,73 +158,10 @@ python manage.py runserver 0.0.0.0:8000
 Now we test our site, but we won't be running this with the django server?
 Let's kill that server with `ctrl+c` and run a reliable server.
 
-## Webserver using Apache
+### A few changes
 
-### Apache and WSGI installation
-
-We'll install and use apache (nginx later)
-
-```bash
-sudo apt-get install apache2
-sudo apt-get install libapache2-mod-wsgi-py3
-```
-
-### Apache configuration
-
-Now we'll configure our web server
-
-```bash
-cd /etc/apache2/sites-available
-sudo cp 000-default.conf django_project.conf
-sudo nano django_project.conf
-```
-
-```apache2
-Alias /static /home/lifework/django_project/static
-<Directory /home/lifework/django_project/static>
-Require all granted
-</Directory>
-
-Alias /media /home/lifework/django_project/media
-<Directory /home/lifework/django_project/media>
-Require all granted
-</Directory>
-
-<Directory /home/lifework/django_project/django_project>
-<Files wsgi.py>
-Require all granted
-</Files>
-</Directory>
-
-WSGIScriptAlias / /home/lifework/django_project/django_project/wsgi.py
-WSGIDaemonProcess django_app python-path=/home/lifework/django_project python-home=/home/lifework/django_project/venv
-WSGIProcessGroup django_app
-```
-
-Let's enable that site through apache
-
-```bash
-sudo a2ensite django_project
-```
-
-Right now we have to get apache access to our database.
-Apache has to be able to read/write to this folder.
-
-```bash
-sudo chown :www-data django_project/db.sqlite3
-sudo chmod 664 django_project/db.sqlite3
-sudo chown :www-data django_project/
-ls- la
-```
-
-Let's do the same for the media folder
-
-```bash
-sudo chown -R :www-data django_project/media/
-sudo chmod -R 775 django_project/media/
-```
-
-A few final changes. Let's create a config.json to store our secret variables.
+A few changes in our project first.
+Let's create a config.json to store our secret variables.
 
 ```bash
 sudo touch /etc/django_project/config.json
@@ -243,7 +183,7 @@ Then in secrets.py, we'll import the json file
 ```py
 import json
 
-with open('/etc/config/django_project/config.json') as config_file:
+with open('/etc/django_project/config.json') as config_file:
   config = json.load(config_file)
 
 SECRET_KEY = config["SECRET_KEY"]
@@ -252,9 +192,124 @@ EMAIL_HOST_USER = config["EMAIL_HOST_USER"]
 EMAIL_HOST_PASSWORD = config["EMAIL_HOST_PASSWORD"]
 ```
 
-At this point it should be fully deployed.
-We delete the allow on 8000
+## Creating a database
+
+### Installing PostgreSQL
 
 ```bash
-sudo ufw delete allow 8000
+sudo apt install postgresql postgresql-contrib
+```
+
+Let's check that everything is well installed with these commands
+
+```bash
+sudo -u postgres psql -c "SELECT version();"
+sudo systemctl status postgresql
+```
+
+To switch user and access PostgreSQL we run that command
+
+```bash
+sudo su - postgres
+```
+
+### Database Setup
+
+#### Creating the database
+
+Let's create a db using PostgreSQL.
+
+```bash
+sudo su - postgres
+createdb mydb
+```
+
+#### Creating the user
+
+Now we create the DB user this way
+
+```bash
+createuser -P username
+```
+
+#### Giving privileges to the user
+
+```bash
+psql
+GRANT ALL PRIVILEGES ON DATABASE django_db TO user;
+```
+
+## Webserver using NGINX and Gunicorn
+
+### Setup of NGINX
+
+This is assuming we already have nginx installed and we launched our virtual environment.
+
+```bash
+sudo nano /etc/nginx/sites-available/myproject
+```
+
+Now let's enter these lines into the editor
+
+```nginx
+server {
+    server_name IP_ADDRESS;
+
+    access_log off;
+
+    location /static/ {
+        alias /home/user/django_project/static/;
+    }
+
+    location /static/ {
+        alias /home/user/django_project/media/;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8001;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_set_header X-Real-IP $remote_addr;
+        add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+    }
+}
+```
+
+Then we'll set up a symbolic link in sites-enabled direectory so NGINX knows it's activated
+
+```nginx
+cd /etc/nginx/sites-enabled
+sudo ln -s ../sites-available/myproject
+```
+
+We'll restart nginx
+
+```nginx
+sudo service nginx restart
+```
+
+Eventually, we can checl if there are som error with this command
+
+```nginx
+systemctl status nginx.service
+```
+
+### Setup of Gunicorn
+
+## Webserver using Apache
+
+```bash
+source /home/user/django_project/venv/bin/activate
+```
+
+Once the cirtualenv in active we install Gunicorn
+
+```bash
+pip install gunicorn
+```
+
+And we can finally bind requets for the domain or ip to port 8001 that we selected
+From the same directory as manage.py, we'll run that command
+
+```bash
+gunicorn django_project.wsgi:application
 ```
