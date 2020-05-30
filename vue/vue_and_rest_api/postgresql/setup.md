@@ -30,3 +30,12 @@ The first step is to create our main folder and place this document structure:
          - [index.ts](main/src/store/index.ts)
      - [tsconfig.json](main/tsconfig.json)
 ```
+
+The important part is the following structure:
+
+```bash
+     - __src__
+       - __controllers__
+       - [index.js](main/src/index.js)
+       - __routes__
+```
