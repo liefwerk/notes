@@ -89,20 +89,6 @@ sudo ufw allow from any to any port 5432 proto tcp
 If you want to use another user (not postgres, alias the superuser), you need to GRANT ACCESS to the tables of the database.
 
 ```sql
-GRANT ALL PRIVILEGES ON TABLE users TO username;
-```
-
-## Printing the response in JSON format
-
-Now that we get our data from the request, let's print it to our website.
-
-```js
-const getUsers = async (req, res) => {
-  try {
-    const response = await pool.query("SELECT * FROM users");
-    res.status(200).json(response.rows);
-  } catch (error) {
-    console.log(error);
-  }
-};
+GRANT ALL PRIVILEGES ON TABLE your_table TO username;
+GRANT USAGE, SELECT ON SEQUENCE your_table_seq TO username;
 ```
