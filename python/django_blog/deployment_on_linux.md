@@ -80,6 +80,12 @@ sudo ufw enable
 sudo ufw status
 ```
 
+To delete an existing rules
+
+```bash
+sudo ufw delete allow 8000
+```
+
 ## Put our web app on the web server
 
 If we are using a virtual env, we can load a requirements.txt file in our project
