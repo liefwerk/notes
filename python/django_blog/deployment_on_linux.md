@@ -39,7 +39,7 @@ sudo chmod 600 ~/.ssh/*
 We can also deactivate connection with a password.
 
 ```bash
-sudo nano /etc/ssh/sshdconfig
+sudo nano /etc/ssh/sshd_config
 ```
 
 In this file we'll change the PermitRootLogin
