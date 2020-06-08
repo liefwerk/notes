@@ -17,7 +17,7 @@ pwd
 `pwd` gives us the full path of our location.
 This gives us an absolute path.
 
-![The Linux directory tree](linux_directory_tree)
+![The Linux directory tree](./linux_directory_tree.JPG)
 
 To list everything in the `Documents` folder with a relative path, we'll do it like this.
 
@@ -99,3 +99,45 @@ popd
 ```
 
 That brings you back to the former directory.
+
+## file - Showing what kind of files
+
+```bash
+file .face
+file .ssr
+```
+
+## locate - Finding a file
+
+This will print all references to that file.
+
+```bash
+locate fstab
+```
+
+### Update the locate database
+
+When you can't find a file, that could mean that the database isn't updated.
+To do it, write the following command.
+
+```bash
+sudo updatedb
+```
+
+## which - Find commands path
+
+`which` is a command that helps you find out if the command you are looking for is installed.
+
+```bash
+which cal
+```
+
+## history - Show already typed commands
+
+The quickest way to show your command history is to type de `Up Arrow`.
+You could also to `history`.
+Usually show the 1000 last commands.
+
+```bash
+history
+```
