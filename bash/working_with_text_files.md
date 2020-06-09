@@ -33,3 +33,34 @@ more file1
 ```bash
 less file1
 ```
+
+## nano - Very powerful little text editor
+
+`Ctrl+O` to write out the file.
+`Ctrl+X` to exit.
+
+```bash
+nano file2
+```
+
+## Direction
+
+### cat >> - Appending to an existing file
+
+With `cat > file2` we create a new file called `file2`.
+With `cat >> file2` we append to `file2`.
+
+### | - Piping
+
+Taking the output of a file and putting it in another.
+
+```bash
+history | less
+```
+
+Let's say we want to see everything of this directory, list it and put it in a file.
+We'll list the root directory and put it inside a file.
+
+```bash
+ls -la / > lsout.txt
+```
