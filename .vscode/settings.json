@@ -1,8 +1,12 @@
 {
   "cSpell.words": [
+    "SRVPORT",
     "hackerinthehouse",
+    "httpd",
     "msfconsole",
     "netmask",
+    "nmap",
+    "portforwarding",
     "portfwd",
     "portscan",
     "rhost",
