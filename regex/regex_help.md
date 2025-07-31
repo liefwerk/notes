@@ -33,5 +33,5 @@ The (?:...) creates a non-capturing group. Since we're not using the captured gr
 The list of characters are either <*>, <*...>, <~...>, <=...>, <-...> or even a combination of all such as <-=-*-~->
 
 ```regex
-<[*~=\-]*>
+/<[*~=\-]*>/g
 ```
